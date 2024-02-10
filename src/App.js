@@ -7,7 +7,7 @@ import Main from './Main.js';
 function App() {
   return (
     <>
-      <Nav />
+      <Header />
       <Main />
     </>
   );

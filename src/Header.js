@@ -1,5 +1,9 @@
+import Nav from './Nav.js';
+
 export default function Header(){
   return (
-    <header></header>
+    <header>
+      <Nav />
+    </header>
   );
 }
