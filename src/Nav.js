@@ -1,14 +1,16 @@
 import {Routes, Route, Link} from "react-router-dom";
 import Main from './Main.js';
 import { Fragment } from "react";
-import logo from"./icons_assets/Logo.svg"
+import logo from "./icons_assets/Logo.svg"
+import BookingPage from "./BookingPage.js";
+import BookingForm from "./BookingForm.js";
 
 function Nav(){
   return (
     <>
       <nav className="nav-container">
         <Link to="/" className="nav-item">
-            <img src={logo} alt="logo" />   
+            <img src={logo} alt="logo" />
         </Link>
         <Link to="/" className="nav-item">Home </Link>
         <Link to="/" className="nav-item">About </Link>
@@ -21,7 +23,7 @@ function Nav(){
           <Route path="/" element={<Fragment />}></Route>
           <Route path="/" element={<Fragment />}></Route>
           <Route path="/" element={<Main />}></Route>
-          <Route path="/" element={<Main />}></Route>
+          <Route path="/" element={<BookingPage />}></Route>
           <Route path="/" element={<Main />}></Route>
           <Route path="/" element={<Main />}></Route>
           <Route path="/" element={<Main />}></Route>
