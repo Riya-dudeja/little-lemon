@@ -1,11 +1,16 @@
 import {Routes, Route, Link} from "react-router-dom";
 import Main from './Main.js';
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import logo from "./icons_assets/Logo.svg"
 import BookingPage from "./BookingPage.js";
 import BookingForm from "./BookingForm.js";
 
 function Nav(){
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  }
+
   return (
     <>
       <nav className="nav-container">
@@ -13,17 +18,17 @@ function Nav(){
             <img src={logo} alt="logo" />
         </Link>
         <Link to="/" className="nav-item">Home </Link>
-        <Link to="/" className="nav-item">About </Link>
-        <Link to="/" className="nav-item">Menu </Link>
-        <Link to="/" className="nav-item">Reservations </Link>
-        <Link to="/" className="nav-item">Order Online </Link>
-        <Link to="/" className="nav-item">Login </Link>
+        <Link to="/about" className="nav-item">About </Link>
+        <Link to="/menu" className="nav-item">Menu </Link>
+        <Link to="/booking" className="nav-item">Reservations </Link>
+        <Link to="/order-online" className="nav-item">Order Online </Link>
+        <Link to="/login" className="nav-item">Login </Link>
       </nav>
       <Routes>
           <Route path="/" element={<Fragment />}></Route>
           <Route path="/" element={<Fragment />}></Route>
           <Route path="/" element={<Main />}></Route>
-          <Route path="/" element={<BookingPage />}></Route>
+          <Route path="/booking" element={<BookingPage />}></Route>
           <Route path="/" element={<Main />}></Route>
           <Route path="/" element={<Main />}></Route>
           <Route path="/" element={<Main />}></Route>

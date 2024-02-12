@@ -1,4 +1,4 @@
-import main from"./icons_assets/main.jpg"
+import main from "./icons_assets/main.jpg"
 
 function Main(){
   return (

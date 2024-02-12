@@ -8,18 +8,18 @@ export default function BookingForm(){
   const [selectedTime, setSelectedTime] = useState("17:00");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
-  const reservationSlots = ['17:00','18:00','19:00','20:00','21:00','22:00'];
-  // const [availableTimes, dispatch] = useReducer(updateTimes,reservationSlots);
+  const availableTimes = ['17:00','18:00','19:00','20:00','21:00','22:00'];
+  // const [state, dispatch] = useReducer(updateTimes, initialTime);
 
-  // // const initialTime = () => {time: '00:00'};
+  //  const initialTime = () => {availableTimes};
   // const updateTimes = (availableTimes, action) => {
-  //   if (action.type === '17:00') return {selectedTime: '17:00'};
-  //   if (action.type === '18:00') return {selectedTime: '18:00'};
-  //   if (action.type === '19:00') return {selectedTime: '19:00'};
-  //   if (action.type === '20:00') return {selectedTime: '20:00'};
-  //   if (action.type === '21:00') return {selectedTime: '21:00'};
-  //   if (action.type === '22:00') return {selectedTime: '22:00'};
-  //   return availableTimes;
+  //   // if (action.type === '17:00') return {selectedTime: '17:00'};
+  //   // if (action.type === '18:00') return {selectedTime: '18:00'};
+  //   // if (action.type === '19:00') return {selectedTime: '19:00'};
+  //   // if (action.type === '20:00') return {selectedTime: '20:00'};
+  //   // if (action.type === '21:00') return {selectedTime: '21:00'};
+  //   // if (action.type === '22:00') return {selectedTime: '22:00'};
+  //   // return availableTimes;
   // }
 
   const handleSubmit = (e) =>{
@@ -70,7 +70,7 @@ export default function BookingForm(){
             value={selectedTime}
             onChange={e => setSelectedTime(e.target.value)}
           >
-            {reservationSlots.map((time, index) => (
+            {availableTimes.map((time, index) => (
               <option key={index} value={time}>{time}</option>))}
           </select>
           <label htmlFor="guests">

@@ -1,14 +1,14 @@
 import './App.css';
-import Header from './Header.js';
-import Nav from './Nav.js';
-import Main from './Main.js';
-// import { Specials } from './Specials.jsx';
+import Header from './components/Header.js';
+import Main from './components/Main.js';
+import {Specials} from './components/Specials.js';
 
 function App() {
   return (
     <>
       <Header />
       <Main />
+      <Specials />
     </>
   );
 }
