@@ -13,12 +13,14 @@ export function Specials(){
                 <img src={recipe.image} />
                 <section className="specials-content">
                   <section className="specials-heading">
-                    <h5>{recipe.title}</h5>
-                    <p>{recipe.price}</p>
-                  </section>
+                    <h3>{recipe.title}</h3>
+                    <p style={{
+                      fontWeight: "bold"
+                    }}>${recipe.price}</p>
+                    </section>
+                    <p>{recipe.description}</p>
+                    <button>Order now</button>
                 </section>
-                <p>{recipe.description}</p>
-                <button>Order now</button>
               </section>
           )}
         </article>

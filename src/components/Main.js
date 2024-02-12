@@ -5,8 +5,10 @@ function Main(){
     <section className="main-container">
       <article className="main-info">
         <h1 className="title">Little Lemon</h1>
-        <h3>Chicago</h3>
-        <p className="about-us">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist</p>
+        <h3 style={{
+          color: "white"
+        }}>Chicago</h3>
+        <p className="about-info">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist</p>
         <button> Reserve a table </button>
       </article>
       <aside>

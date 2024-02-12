@@ -1,6 +1,6 @@
 import { useState, useReducer } from "react";
 
-export default function BookingForm(){
+export default function BookingForm({props}){
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -8,19 +8,7 @@ export default function BookingForm(){
   const [selectedTime, setSelectedTime] = useState("17:00");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
-  const availableTimes = ['17:00','18:00','19:00','20:00','21:00','22:00'];
-  // const [state, dispatch] = useReducer(updateTimes, initialTime);
-
-  //  const initialTime = () => {availableTimes};
-  // const updateTimes = (availableTimes, action) => {
-  //   // if (action.type === '17:00') return {selectedTime: '17:00'};
-  //   // if (action.type === '18:00') return {selectedTime: '18:00'};
-  //   // if (action.type === '19:00') return {selectedTime: '19:00'};
-  //   // if (action.type === '20:00') return {selectedTime: '20:00'};
-  //   // if (action.type === '21:00') return {selectedTime: '21:00'};
-  //   // if (action.type === '22:00') return {selectedTime: '22:00'};
-  //   // return availableTimes;
-  // }
+  const reservationSlots = ['17:00','18:00','19:00','20:00','21:00','22:00'];
 
   const handleSubmit = (e) =>{
     e.preventDefault();
@@ -70,7 +58,7 @@ export default function BookingForm(){
             value={selectedTime}
             onChange={e => setSelectedTime(e.target.value)}
           >
-            {availableTimes.map((time, index) => (
+            {reservationSlots.map((time, index) => (
               <option key={index} value={time}>{time}</option>))}
           </select>
           <label htmlFor="guests">
