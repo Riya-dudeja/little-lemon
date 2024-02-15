@@ -4,6 +4,8 @@
   padding: 0;
 }
 
+/* navbar */
+
 .nav-container{
   display: flex;
   justify-content: center;
@@ -15,32 +17,37 @@
   font-weight: bold;
   color: black;
 }
+
+/* main section */
 section.main-container{
   background-color: #495E57;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* display: flex;
-  justify-content: center; */
-  padding: 20px;
+  height: 360px;
   padding-left: 70px;
-  height: 380px;
   margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
 }
-.main-info{
+
+.main{
   padding: 14px;
+  max-width: 550px;
 }
+
 .title{
   color: #F4CE14;
   font-size: 2.7rem;
   font-family: 'Markazi Text';
+  margin-bottom: 0;
 }
 h3{
-  color:rgb(18, 17, 17);
+  color: white;
+  margin-top: 0;
   font-size: 1.5rem;
   font-family: Karla;
   margin-bottom: 20px;
 }
-.about-info{
+.main-info{
   color:white;
   font-size: 1.3rem;
   font-family: Karla;
@@ -55,15 +62,14 @@ button{
   margin-top: 15px;
 }
 .main-img{
-  /* position: absolute;
-  /* right: 13%;
-  top: 15%; */
   border-radius: 18px;
-  width: 60%;
+  width: 70%;
   height: 380px;
   box-shadow: 3px 3px 15px rgba(0,0,0,.2);
   margin: 50px;
 }
+
+ /* reserve-table form */
 
 h2{
   font-size: 1.9rem;
@@ -78,31 +84,32 @@ fieldset{
   padding: 18px;
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 380px;
   justify-content: center;
-  font: 1.1rem Karla;
+  font: 1.07rem Karla;
 }
 label{
   padding-block: 0.8rem;
   display: inline-block;
 }
 input[type="submit"]{
-  padding: 5px;
-  margin-top: 15px;
+  padding: 3px;
+  margin-top: 25px;
   background-color: #F4CE14;
   border: 1px solid black;
   border-radius: 20px;
-  font-size: 12pt;
+  font-size: 11.5pt;
   cursor: pointer;
 }
 legend{
   font-size: 1.4rem;
 }
 input{
-  padding: 5px;
+  padding: 3px;
   display: inline-block;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
+
 /* specials section*/
 
 .specials-container{
@@ -196,65 +203,6 @@ section .specials-heading{
   z-index: 0;
 }
 
-
-@media screen and (max-width: 768px){
-  /* .menu-icon {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .nav-links.visible {
-    display: flex;
-    background: #333333;
-    z-index: 1000;
-    padding: 20px 0;
-  }
-
-  .navbar{
-    background:#fff;
-    padding: 10px 8%;
-  }
-
-  nav ul li a{
-    color: #fff;
-  }
-
-  .bar{
-    background: #333333;
-  } */
-
-  .main-img{
-    display: none;
-  }
-
-  .specials-container{
-    margin: 20px 0;
-  }
-  .specials-header{
-    justify-content: flex-start;
-  }
-
-  .special-items{
-    width: 100%;
-  }
-
-  /* footer section{
-    padding: 10px 8%;
-    flex-direction: column;
-  }
-  .company-info p{
-    width: 100%;
-  }
-}
-
-.hidden{
-  display: none;
-} */
-}
-
 /* @media only screen and (max-width: 800px) {
     .about-wrap {
       flex-direction: column;
@@ -267,3 +215,39 @@ section .specials-heading{
         margin: -10% 0 0 -5%;
     }
 } */
+
+/* for smaller screens */
+@media(max-width: 600px){
+  .main-container{
+  background-color: #495E57;
+  padding-left: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  }
+  .main-img{
+    display: none;
+  }
+  .main-info{
+    padding: 10px;
+  }
+  fieldset{
+    padding: 15px;
+    width: 300px;
+    font: 1rem Karla;
+  }
+  legend{
+      font-size: 1.3rem;
+  }
+  .specials-container{
+    margin: 20px 0;
+  }
+  .specials-header{
+    justify-content: flex-start;
+  }
+
+  .special-items{
+    width: 100%;
+  }
+}

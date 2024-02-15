@@ -1,6 +1,6 @@
 import { useState, useReducer } from "react";
 
-export default function BookingForm({props}){
+export default function BookingForm(props){
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -8,7 +8,7 @@ export default function BookingForm({props}){
   const [selectedTime, setSelectedTime] = useState("17:00");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
-  const reservationSlots = ['17:00','18:00','19:00','20:00','21:00','22:00'];
+  // const reservationSlots = ['17:00','18:00','19:00','20:00','21:00','22:00'];
 
   const handleSubmit = (e) =>{
     e.preventDefault();
@@ -22,7 +22,7 @@ export default function BookingForm({props}){
       <fieldset>
         <legend>Book your desired table</legend>
           <label htmlFor="name">
-            Full Name
+            Name
           </label>
           <input
             type="text"
@@ -32,7 +32,7 @@ export default function BookingForm({props}){
             placeholder="Enter your name here"
           />
           <label htmlFor="email">
-            Email ID
+            Email
           </label>
           <input
             type="email"
@@ -58,7 +58,7 @@ export default function BookingForm({props}){
             value={selectedTime}
             onChange={e => setSelectedTime(e.target.value)}
           >
-            {reservationSlots.map((time, index) => (
+            {props.availableTimes.map((time, index) => (
               <option key={index} value={time}>{time}</option>))}
           </select>
           <label htmlFor="guests">

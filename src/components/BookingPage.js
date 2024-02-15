@@ -1,22 +1,16 @@
 import { useReducer } from 'react';
 import BookingForm from './BookingForm.js';
-import Header from './Header.js';
+import { fetchAPI } from "./bookingAPI.js";
+
 export default function BookingPage(){
-  const reservationSlots = ['17:00','18:00','19:00','20:00','21:00','22:00'];
-  const initializeTimes = (() => reservationSlots);
-  const updateTimes = (availableTimes, action) => {
-    if (action.type === '17:00') return {availableTimes: '17:00'};
-    if (action.type === '18:00') return {availableTimes: '18:00'};
-    if (action.type === '19:00') return {availableTimes: '19:00'};
-    if (action.type === '20:00') return {availableTimes: '20:00'};
-    if (action.type === '21:00') return {availableTimes: '21:00'};
-    if (action.type === '22:00') return {availableTimes: '22:00'};
-    return availableTimes;
+  function updateTimes(date) {
+    return fetchAPI(date);
   }
-  const [availableTimes, dispatch] = useReducer(updateTimes,initializeTimes);
+  const initialTime = (fetchAPI(new Date()));
+  const [availableTimes, dispatch] = useReducer(updateTimes,initialTime);
     return (
       <section className='reserve-table'>
-      <BookingForm/>
+      <BookingForm availableTimes={availableTimes} updateTimes={dispatch}/>
       </section>
     )
 }
