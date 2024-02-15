@@ -25,7 +25,7 @@ function Nav(){
         <Link to="/login" className="nav-item">Login </Link>
       </nav>
       <Routes>
-          <Route path="/" element={<Fragment />}></Route>
+          <Route path="/" element={<App />}></Route>
           <Route path="/" element={<Fragment />}></Route>
           <Route path="/" element={<Main />}></Route>
           <Route path="/booking" element={<BookingPage />}></Route>

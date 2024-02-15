@@ -2,7 +2,8 @@ import main from "./icons_assets/main.jpg"
 
 function Main(){
   return (
-    <section className="main-container">
+    <main>
+      <section className="main-container">
       <article className="main">
         <h1 className="title">Little Lemon</h1>
         <h3>Chicago</h3>
@@ -13,6 +14,7 @@ function Main(){
         <img src= {main} className="main-img" alt="Chef holding a serving of our famous sliders"/>
       </aside>
     </section>
+    </main>
   );
 }
 export default Main;

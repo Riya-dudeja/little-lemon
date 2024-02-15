@@ -1,5 +1,5 @@
 import brothers from  "./icons_assets/mario-adrian.jpg"
-import chef from  "./icons_assets/chef.jpg"
+import chefs from  "./icons_assets/adrian-mario.jpg"
 
 function About(){
   return (
@@ -8,9 +8,7 @@ function About(){
         <section className="about-wrap">
           <section className="about-text">
             <h1 className="title">Little Lemon</h1>
-            <h3 style={{
-              color: "white"
-            }}>Chicago</h3>
+            <h3>Chicago</h3>
             <p className="about">We are a family owned Mediterranean restaurant by two Italian brothers, Mario and Adrian, focused on serving traditional recipes with a modern twist. Join us at Little Lemon and indulge in a memorable dining experience where Mediterranean flavors take center stage.</p>
             <br />
             <p className="about">
@@ -18,7 +16,7 @@ function About(){
             </p>
           </section>
            <section className="img-wrap">
-              <img src={chef} alt="Picture of chef cooking in kitchen" />
+              <img src={chefs} alt="Picture of chef cooking in kitchen" />
               <img src={brothers} alt="Picture of owner brothers" />
             </section>
         </section>

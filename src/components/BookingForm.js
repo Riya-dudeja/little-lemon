@@ -8,10 +8,15 @@ export default function BookingForm(props){
   const [selectedTime, setSelectedTime] = useState("17:00");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
-  // const reservationSlots = ['17:00','18:00','19:00','20:00','21:00','22:00'];
 
   const handleSubmit = (e) =>{
     e.preventDefault();
+    props.submitForm(e);
+  }
+
+  const handleDateChange = (e) =>{
+    setDate(e);
+    props.dispatch(e);
   }
 
   return(
@@ -48,7 +53,7 @@ export default function BookingForm(props){
             type="date"
             id="res-date"
             value={date}
-            onChange={e => setDate(e.target.value)}
+            onChange={handleDateChange}
           />
           <label htmlFor="res-time">
             Choose desired time slot

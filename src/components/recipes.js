@@ -17,7 +17,7 @@ const recipes = [
     price: 5.99,
     image: bruchetta,
     description:
-      "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
+      "Our Bruchetta is made from grilled bread that has been smeared with garlic, some garnished cherry tomatoes seasoned with salt and olive oil.",
   },
   {
     id: 3,
