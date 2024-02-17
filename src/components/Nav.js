@@ -3,7 +3,7 @@ import Main from './Main.js';
 import { Fragment, useState } from "react";
 import logo from "./icons_assets/Logo.svg"
 import BookingPage from "./BookingPage.js";
-import BookingForm from "./BookingForm.js";
+import ConfirmedBooking from "./ConfirmedBooking.js";
 
 function Nav(){
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,13 +25,14 @@ function Nav(){
         <Link to="/login" className="nav-item">Login </Link>
       </nav>
       <Routes>
-          <Route path="/" element={<App />}></Route>
+          <Route path="/" element={<Fragment />}></Route>
           <Route path="/" element={<Fragment />}></Route>
           <Route path="/" element={<Main />}></Route>
           <Route path="/booking" element={<BookingPage />}></Route>
           <Route path="/" element={<Main />}></Route>
           <Route path="/" element={<Main />}></Route>
           <Route path="/" element={<Main />}></Route>
+          <Route path="/confirmed" element={<ConfirmedBooking />}></Route>
       </Routes>
    </>
   );

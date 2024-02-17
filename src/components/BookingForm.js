@@ -1,11 +1,11 @@
-import { useState, useReducer } from "react";
+import { useState } from "react";
 
 export default function BookingForm(props){
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("17:00");
+  const [selectedTime, setSelectedTime] = useState(props.availableTimes.map((times) => <option>{times}</option>));
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
@@ -15,15 +15,16 @@ export default function BookingForm(props){
   }
 
   const handleDateChange = (e) =>{
-    setDate(e);
-    props.dispatch(e);
+    setDate(e.target.value);
+    let stringDate = e.target.value;
+    const date = new Date(stringDate);
+    props.updateTimes(date);
+    setSelectedTime(props.availableTimes.map((times) => <option>{times}</option>));
   }
 
   return(
   <section className="form">
-    <form
-      onSubmit={handleSubmit}
-    >
+    <form onSubmit={handleSubmit}>
       <fieldset>
         <legend>Book your desired table</legend>
           <label htmlFor="name">
@@ -59,12 +60,10 @@ export default function BookingForm(props){
             Choose desired time slot
           </label>
           <select
-            id="res-time"
-            value={selectedTime}
-            onChange={e => setSelectedTime(e.target.value)}
-          >
-            {props.availableTimes.map((time, index) => (
-              <option key={index} value={time}>{time}</option>))}
+            id="res-time" required>
+            { /* value={selectedTime}
+             onChange={e => setSelectedTime(e.target.value)} */ }
+            {selectedTime}
           </select>
           <label htmlFor="guests">
             Number of guests

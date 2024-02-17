@@ -4,12 +4,13 @@ import { fetchAPI, submitAPI} from "./bookingAPI.js";
 import { useNavigate } from 'react-router-dom';
 
 export default function BookingPage(){
-  const [availableTimes, dispatch] = useReducer(updateTimes,initialTime);
 
   function updateTimes(date) {
-    return {availableTimes: (fetchAPI(new Date()))};
+    return fetchAPI(date);
   }
-  const initialTime = {availableTimes: (fetchAPI(new Date()))};
+  const initializeTime = fetchAPI(new Date());
+
+  const [availableTimes, dispatch] = useReducer(updateTimes, initializeTime);
 
   const navigate = useNavigate();
   function submitForm(formData){
@@ -19,7 +20,8 @@ export default function BookingPage(){
   }
     return (
       <section className='reserve-table'>
-      <BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm} />
+        <BookingForm availableTimes={availableTimes} updateTimes={dispatch} submitForm={submitForm} />
       </section>
     )
 }
+// const initialTime = {availableTimes: (fetchAPI(new Date()))};
