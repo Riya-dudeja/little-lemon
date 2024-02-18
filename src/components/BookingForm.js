@@ -5,7 +5,7 @@ export default function BookingForm(props){
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState(props.availableTimes.map((times) => <option>{times}</option>));
+  const [selectedTime, setSelectedTime] = useState(props.availableTimes.map((times) => <option value={times} key={times}>{times}</option>));
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
@@ -36,6 +36,8 @@ export default function BookingForm(props){
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name here"
+            required
+            aria-required
           />
           <label htmlFor="email">
             Email
@@ -46,6 +48,8 @@ export default function BookingForm(props){
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email here"
+            required
+            aria-required
           />
           <label htmlFor="res-date">
             Choose date
@@ -54,15 +58,18 @@ export default function BookingForm(props){
             type="date"
             id="res-date"
             value={date}
+            required
+            aria-required
             onChange={handleDateChange}
           />
           <label htmlFor="res-time">
             Choose desired time slot
           </label>
           <select
-            id="res-time" required>
-            { /* value={selectedTime}
-             onChange={e => setSelectedTime(e.target.value)} */ }
+            id="res-time"
+            required
+            aria-required
+          >
             {selectedTime}
           </select>
           <label htmlFor="guests">
@@ -87,11 +94,12 @@ export default function BookingForm(props){
           >
             <option>Birthday</option>
             <option>Anniversary</option>
-            <option>Wedding Reception</option>
+            <option>Kitty Party</option>
             <option>Others</option>
           </select>
           <input
             type="submit"
+            aria-label="Submit reservation form"
             value="Make Your reservation"
             disabled={(!date && !selectedTime)}
           />
