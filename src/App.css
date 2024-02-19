@@ -287,7 +287,6 @@ footer .company-info{
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  /* grid-template-columns: repeat(4, 1fr); */
   max-width: 1100px;
   margin: 0 auto;
   padding-bottom: 10px ;
@@ -313,7 +312,7 @@ footer ul li{
 @media(max-width: 700px){
   .menu-icon {
     display: block;
-    margin-left: 25%;
+    margin-left: 40%;
   }
   .nav-container{
     justify-content: flex-start;
@@ -341,17 +340,18 @@ footer ul li{
   }
   .main-container{
   background-color: #495E57;
-  padding-left: 20px;
+  padding: 20px;
   margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items:center;
+  padding-bottom: 40px;
   }
   .main-img{
     display: none;
   }
   .main-info{
-    padding: 10px;
+    padding: 10px 10px 10px 0px;
   }
   fieldset{
     padding: 15px;
@@ -369,7 +369,7 @@ footer ul li{
   }
 
   .special-items{
-    width: 100%;
+    width: 80%;
   }
   footer .company-info{
     padding: 10px 5%;
@@ -386,4 +386,9 @@ footer ul li{
   .company-info section{
     padding-top: 24px;
   }
+}
+.errors{
+  color:rgb(248, 21, 21);
+  font-weight: bold;
+  line-height: 30px;
 }

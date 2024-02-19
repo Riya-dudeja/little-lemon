@@ -1,6 +1,7 @@
 import {Routes, Route, Link} from "react-router-dom";
 import { useState } from "react";
 import logo from "./icons_assets/Logo.svg"
+import BookingPage from "./BookingPage.js"
 
 function Nav(){
   const [showMenu, setShowMenu] = useState(false);
@@ -9,6 +10,7 @@ function Nav(){
   }
 
   return (
+    <>
       <nav className={`nav-container ${showMenu ? "open" : "" }`}>
           <Link to="/" className="nav-item">
               <img src={logo} alt="logo" />
@@ -39,6 +41,10 @@ function Nav(){
             </li>
           </ul>
       </nav>
+      <Routes>
+        <Route path="/booking" element={<BookingPage/>}></Route>
+      </Routes>
+    </>
   );
 }
 export default Nav;
