@@ -4,15 +4,13 @@ import { fetchAPI, submitAPI} from "./bookingAPI.js";
 import { useNavigate } from 'react-router-dom';
 
 export default function BookingPage(){
-
+  const navigate = useNavigate();
   function updateTimes(date) {
     return fetchAPI(date);
   }
   const initializeTime = fetchAPI(new Date());
 
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTime);
-
-  const navigate = useNavigate();
   function submitForm(formData){
     if(submitAPI(formData)){
       navigate("/confirmed")
@@ -24,4 +22,3 @@ export default function BookingPage(){
       </section>
     )
 }
-// const initialTime = {availableTimes: (fetchAPI(new Date()))};

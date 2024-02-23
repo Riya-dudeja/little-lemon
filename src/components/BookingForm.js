@@ -1,12 +1,11 @@
 import {Formik, Form, Field, ErrorMessage} from 'formik';
-import { useState } from 'react';
 import * as Yup from "yup";
 
 const validateSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
   email: Yup.string().required("Email is required.").email("Please enter a valid email address"),
   date: Yup.string().required("Choose date for reservation"),
-  time: Yup.string().required("Choose your desired time slot"),
+  time: Yup.string().required("Choose desired time slot"),
   guests: Yup.number().min(1).max(10, "Can't exceed 10 guests"),
 })
 
@@ -17,8 +16,7 @@ export default function BookingForm(props){
   }
 
   const handleDateChange = (e) =>{
-    let stringDate = e.target.value;
-    const date = new Date(stringDate);
+    const date = new Date(e.target.value);
     props.updateTimes(date);
     // (props.availableTimes.map((times) => <option>{times}</option>));
   }
@@ -52,6 +50,7 @@ export default function BookingForm(props){
               placeholder="Enter your name here"
               required
               aria-required
+              data-testid="name"
             />
             <ErrorMessage
               name="name"
@@ -68,6 +67,7 @@ export default function BookingForm(props){
               placeholder="Enter your email here"
               required
               aria-required
+              data-testid="email"
             />
             <ErrorMessage
               name="email"
@@ -97,14 +97,13 @@ export default function BookingForm(props){
             </label>
             <Field
               as="select"
-              id="res-time"
               name="time"
               required
               aria-required
-              data-testid="time"
+              data-testid="time-slot"
             >
               {props.availableTimes.map(
-                (times) => <option>{times}</option>)
+                (times) => <option value={times} key={times}>{times}</option>)
               }
             </Field>
             <label htmlFor="guests">
@@ -134,8 +133,8 @@ export default function BookingForm(props){
               name="occasion"
               data-testid="occasion"
             >
-              <option>Birthday</option>
-              <option>Anniversary</option>
+              <option data-testid="birthday">Birthday</option>
+              <option data-testid="anniversary">Anniversary</option>
               <option>Kitty Party</option>
               <option>Others</option>
             </Field>

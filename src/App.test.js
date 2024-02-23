@@ -35,6 +35,6 @@ import { BrowserRouter as Router } from "react-router-dom";
     expect(occasion).toBeInTheDocument();
     const guests = screen.getByTestId("guests");
     expect(guests).toBeInTheDocument();
-    const time = screen.getByTestId("time");
+    const time = screen.getByTestId("time-slot");
     expect(time).toBeInTheDocument();
   });

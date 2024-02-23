@@ -97,6 +97,7 @@ button{
   font-weight: bold;
   font-size: 14pt;
   margin-top: 17px;
+  cursor: pointer;
 }
 .main-img{
   border-radius: 18px;
