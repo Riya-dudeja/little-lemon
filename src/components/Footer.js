@@ -4,7 +4,7 @@ function Footer(){
     <footer>
     <article className="company-info">
       <section className="img">
-        <img src={footerImg} alt="picture of restaurant" />
+        <img src={footerImg} alt="Restaurant's outdoors" />
       </section>
       <section className="nav">
         <nav>

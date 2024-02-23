@@ -1,7 +1,7 @@
-import {Routes, Route, Link} from "react-router-dom";
+import {Outlet, NavLink} from "react-router-dom";
 import { useState } from "react";
-import logo from "./icons_assets/Logo.svg"
-import BookingPage from "./BookingPage.js"
+import logo from "./icons_assets/Logo.svg";
+import ham from "./icons_assets/hamIcon.svg"
 
 function Nav(){
   const [showMenu, setShowMenu] = useState(false);
@@ -12,38 +12,37 @@ function Nav(){
   return (
     <>
       <nav className={`nav-container ${showMenu ? "open" : "" }`}>
-          <Link to="/" className="nav-item">
+          <NavLink to="/" className="nav-item">
               <img src={logo} alt="logo" />
-          </Link>
-          <div class="menu-icon" onClick={toggleMenu}>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+          </NavLink>
+          <div className="menu-icon" onClick={toggleMenu}>
+            {/* <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div> */}
+            <img src={ham} alt="ham-burger icon" />
           </div>
           <ul className={`nav-links ${showMenu ? "visible" : ""}`}>
             <li>
-              <Link to="/" className="nav-item">Home</Link>
+              <NavLink to="/" className="nav-item">Home</NavLink>
             </li>
             <li>
-              <Link to="/about" className="nav-item">About</Link>
+              <NavLink to="/about" className="nav-item">About</NavLink>
             </li>
             <li>
-              <Link to="/menu" className="nav-item">Menu</Link>
+              <NavLink to="/menu" className="nav-item">Menu</NavLink>
             </li>
             <li>
-              <Link to="/booking" className="nav-item">Reservations</Link>
+              <NavLink to="/booking" className="nav-item">Reservations</NavLink>
             </li>
             <li>
-              <Link to="/order" className="nav-item">Order Online</Link>
+              <NavLink to="/order" className="nav-item">Order Online</NavLink>
             </li>
             <li>
-              <Link to="/login" className="nav-item">Login</Link>
+              <NavLink to="/login" className="nav-item">Login</NavLink>
             </li>
           </ul>
       </nav>
-      <Routes>
-        <Route path="/booking" element={<BookingPage/>}></Route>
-      </Routes>
+      <Outlet />
     </>
   );
 }

@@ -7,7 +7,7 @@ function Main(){
       <article className="main">
         <h1 className="title">Little Lemon</h1>
         <h3>Chicago</h3>
-        <p className="main-info">We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist. Join us at little lemon anytime to have a good time.</p>
+        <p className="main-info">We are a charming neighborhood bistro that serves good food and classic drinks in a lively but casual environment. The restaurant features a locally sourced menu with daily specials.</p>
         <button>Reserve a table</button>
       </article>
       <aside>

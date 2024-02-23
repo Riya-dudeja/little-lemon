@@ -1,5 +1,14 @@
-import { useState } from "react";
 import {Formik, Form, Field, ErrorMessage} from 'formik';
+import { useState } from 'react';
+import * as Yup from "yup";
+
+const validateSchema = Yup.object().shape({
+  name: Yup.string().required("Required"),
+  email: Yup.string().required("Email is required.").email("Please enter a valid email address"),
+  date: Yup.string().required("Choose date for reservation"),
+  time: Yup.string().required("Choose your desired time slot"),
+  guests: Yup.number().min(1).max(10, "Can't exceed 10 guests"),
+})
 
 export default function BookingForm(props){
   const handleSubmit = (e) =>{
@@ -8,11 +17,10 @@ export default function BookingForm(props){
   }
 
   const handleDateChange = (e) =>{
-    // setDate(e.target.value);
     let stringDate = e.target.value;
     const date = new Date(stringDate);
     props.updateTimes(date);
-    // setSelectedTime(props.availableTimes.map((times) => <option>{times}</option>));
+    // (props.availableTimes.map((times) => <option>{times}</option>));
   }
 
   return(
@@ -21,29 +29,7 @@ export default function BookingForm(props){
       initialValues= {
           {name: "", email: "", date: "", time: "",guests: 1, occasion: "Birthday"}
       }
-      validate={(values) => {
-        const errors = {};
-        if(!values.name){
-          errors.name = "Name is Required."
-        }
-        if(!values.email){
-          errors.name = "Email Required."
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ){
-          errors.email = "Invalid email address";
-        }
-        if(!values.date){
-          errors.date = "Choose date for reservation"
-        }
-        if(!values.time){
-          errors.time = "Choose your desired time slot"
-        }
-        if(values.guests < 0 ){
-          errors.guests = "Minimum 1 guest is required"
-        }
-        return errors;
-      }}
+      validationSchema={validateSchema}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
@@ -62,6 +48,7 @@ export default function BookingForm(props){
               type="text"
               id="name"
               name="name"
+              aria-label= "name"
               placeholder="Enter your name here"
               required
               aria-required
@@ -70,13 +57,14 @@ export default function BookingForm(props){
               name="name"
               component="section"
               className="errors"
+              role="alert"
             />
             <label htmlFor="email"> Email </label>
             <Field
               type="email"
               id="email"
               name="email"
-              // onChange={(e) => setEmail(e.target.value)}
+              aria-label= "Email address"
               placeholder="Enter your email here"
               required
               aria-required
@@ -85,6 +73,7 @@ export default function BookingForm(props){
               name="email"
               component="section"
               className="errors"
+              role="alert"
             />
             <label htmlFor="res-date">
               Choose date
@@ -93,28 +82,31 @@ export default function BookingForm(props){
               type="date"
               id="res-date"
               name="date"
+              // onChange={handleDateChange}
               required
               aria-required
-              // onChange={handleDateChange}
             />
             <ErrorMessage
               name="date"
               component="section"
               className="errors"
+              role="alert"
             />
             <label htmlFor="res-time">
               Choose desired time slot
             </label>
-            <select
+            <Field
+              as="select"
               id="res-time"
               name="time"
               required
               aria-required
+              data-testid="time"
             >
               {props.availableTimes.map(
                 (times) => <option>{times}</option>)
               }
-            </select>
+            </Field>
             <label htmlFor="guests">
               Number of guests
             </label>
@@ -125,30 +117,33 @@ export default function BookingForm(props){
               max="10"
               id="guests"
               name="guests"
-              // onChange={(e) => setGuests(parseInt(e.target.value))}
+              data-testid="guests"
             />
             <ErrorMessage
               name="guests"
               component="section"
               className="errors"
+              role="alert"
             />
             <label htmlFor="occasion">
               Occasion
             </label>
-            <select
+            <Field
+              as="select"
               id="occasion"
               name="occasion"
-              // onChange={e => setOccasion(e.target.value)}
+              data-testid="occasion"
             >
               <option>Birthday</option>
               <option>Anniversary</option>
               <option>Kitty Party</option>
               <option>Others</option>
-            </select>
+            </Field>
             <input
               type="submit"
+              data-testid="submit"
               aria-label="Submit reservation form"
-              value="Make Your reservation"
+              value="Make Your Reservation"
               disabled={isSubmitting}
             />
         </fieldset>

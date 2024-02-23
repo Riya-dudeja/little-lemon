@@ -1,6 +1,9 @@
 function ConfirmedBooking(){
   return(
-    <h2>Your Order has been confirmed</h2>
+    <section className="confirm">
+      <h2>Your Reservation has been confirmed!</h2>
+      <p>We've sent you a confirmation mail as well,  Feel free to check further details there.</p>
+    </section>
   )
 }
 
