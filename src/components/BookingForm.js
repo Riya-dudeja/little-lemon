@@ -1,5 +1,7 @@
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from "yup";
+// import CIcon from '@coreui/icons-react';
+// import {cilAlarm} from '@coreui/icons'
 
 const validateSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
@@ -15,11 +17,13 @@ export default function BookingForm(props){
     props.submitForm(e);
   }
 
-  const handleDateChange = (e) =>{
-    const date = new Date(e.target.value);
-    props.updateTimes(date);
-    // (props.availableTimes.map((times) => <option>{times}</option>));
-  }
+  // const handleDateChange = (e) =>{
+  //   setDate(e.target.value);
+  //   const date = new Date(e.target.value);
+  //   props.updateTimes(date);
+  //   setResponseTime(props.availableTimes.map(
+  //       (times) => <option value={times} key={times}>{times}</option>));
+  // }
 
   return(
   <section className="form">
@@ -35,7 +39,7 @@ export default function BookingForm(props){
         }, 400);
       }}
     >
-      {({isSubmitting}) => (
+      {({isSubmitting, isValid}) => (
         <Form onSubmit={handleSubmit}>
         <fieldset>
           <legend>
@@ -82,7 +86,6 @@ export default function BookingForm(props){
               type="date"
               id="res-date"
               name="date"
-              // onChange={handleDateChange}
               required
               aria-required
             />
@@ -93,6 +96,7 @@ export default function BookingForm(props){
               role="alert"
             />
             <label htmlFor="res-time">
+            {/* <CIcon icon={cilAlarm} size={"sm"} /> */}
               Choose desired time slot
             </label>
             <Field
@@ -143,7 +147,7 @@ export default function BookingForm(props){
               data-testid="submit"
               aria-label="Submit reservation form"
               value="Make Your Reservation"
-              disabled={isSubmitting}
+              disabled={!isValid && isSubmitting}
             />
         </fieldset>
       </Form>
