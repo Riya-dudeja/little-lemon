@@ -109,43 +109,43 @@ export const drinks = [
     id: 2,
     title: "Hot Chocolate",
     ingredients:
-      "Pasta, vegetables, mozzarella",
+      "Freshly sourced Belgium chocolate",
   },
   {
     id: 3,
     title: "Peach Ice Tea",
     ingredients:
-      "Squid, buttermilk",
+      "Iced tea infused with peach",
   },
   {
     id: 4,
     title: "Irish Coffee",
     ingredients:
-      "Pasta, vegetables, mozzarella",
+      "Brewed with Irish beans",
   },
   {
     id: 5,
     title: "Casatta cheesecake shake",
     ingredients:
-      "Pasta, vegetables, mozzarella",
+      "Casatta cream with cheesy flavor",
   },
   {
     id: 6,
     title: "Iced Latte",
     ingredients:
-      "Pasta, vegetables, mozzarella",
+      "Fresh Iced Latte",
   },
   {
     id: 7,
     title: "Lemon mojito",
     ingredients:
-      "Pasta, vegetables, mozzarella",
+      "Mojito infused with lemon & mint",
   },
   {
     id: 8,
     title: "Pink lady",
     ingredients:
-      "Pasta, vegetables, mozzarella",
+      "Secret ingredients",
   },
 ]
 export default items;

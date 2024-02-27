@@ -1,13 +1,11 @@
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from "yup";
-// import CIcon from '@coreui/icons-react';
-// import {cilAlarm} from '@coreui/icons'
 
 const validateSchema = Yup.object().shape({
-  name: Yup.string().required("Required"),
-  email: Yup.string().required("Email is required.").email("Please enter a valid email address"),
-  date: Yup.string().required("Choose date for reservation"),
-  time: Yup.string().required("Choose desired time slot"),
+  name: Yup.string().required("* Required"),
+  email: Yup.string().required("* Email is required.").email(" Email address not valid!"),
+  date: Yup.string().required("Please choose date for reservation"),
+  time: Yup.string().required("Please specify desired time slot"),
   guests: Yup.number().min(1).max(10, "Can't exceed 10 guests"),
 })
 
@@ -17,19 +15,11 @@ export default function BookingForm(props){
     props.submitForm(e);
   }
 
-  // const handleDateChange = (e) =>{
-  //   setDate(e.target.value);
-  //   const date = new Date(e.target.value);
-  //   props.updateTimes(date);
-  //   setResponseTime(props.availableTimes.map(
-  //       (times) => <option value={times} key={times}>{times}</option>));
-  // }
-
   return(
   <section className="form">
     <Formik
       initialValues= {
-          {name: "", email: "", date: "", time: "",guests: 1, occasion: "Birthday"}
+          {name: "", email: "", date: "", time: props.availableTimes[0], guests: 1, occasion: "Birthday"}
       }
       validationSchema={validateSchema}
       onSubmit={(values, { setSubmitting }) => {
@@ -39,7 +29,7 @@ export default function BookingForm(props){
         }, 400);
       }}
     >
-      {({isSubmitting, isValid}) => (
+      {({isSubmitting, isValid, setFieldValue}) => (
         <Form onSubmit={handleSubmit}>
         <fieldset>
           <legend>
@@ -86,6 +76,16 @@ export default function BookingForm(props){
               type="date"
               id="res-date"
               name="date"
+              onChange={e => {
+                setFieldValue("date", e.target.value, true)
+                const date = new Date(e.target.value);
+                props.updateTimes(date);
+                setFieldValue("time", props.availableTimes.slots.map(
+                  (times) => <option value={times} key={times}>{times}</option>
+                ), false
+                );
+              }
+              }
               required
               aria-required
             />
@@ -96,7 +96,6 @@ export default function BookingForm(props){
               role="alert"
             />
             <label htmlFor="res-time">
-            {/* <CIcon icon={cilAlarm} size={"sm"} /> */}
               Choose desired time slot
             </label>
             <Field
@@ -106,8 +105,8 @@ export default function BookingForm(props){
               aria-required
               data-testid="time-slot"
             >
-              {props.availableTimes.map(
-                (times) => <option value={times} key={times}>{times}</option>)
+              {props.availableTimes.slots.map(
+                (time) => <option value={time} key={time}>{time}</option>)
               }
             </Field>
             <label htmlFor="guests">
@@ -142,7 +141,7 @@ export default function BookingForm(props){
               <option>Kitty Party</option>
               <option>Others</option>
             </Field>
-            <input
+            <Field
               type="submit"
               data-testid="submit"
               aria-label="Submit reservation form"

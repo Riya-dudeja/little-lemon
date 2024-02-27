@@ -36,6 +36,7 @@ function Footer(){
         </ul>
       </section>
     </article>
+    <p id="copy" style={{textAlign: "center"}}> &copy; Copyright Little lemon</p>
   </footer>
   );
 }

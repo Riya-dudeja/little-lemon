@@ -7,6 +7,7 @@ const Menu = () => {
         <h1 >Our Menu</h1>
         <article className="menu-items">
           <section className="menu-section">
+            <h1>Staters</h1>
             {
                 items.map(item => (
                   <section key={item.id} className="menu-item">
@@ -17,6 +18,7 @@ const Menu = () => {
             )}
           </section>
           <section className="menu-section">
+            <h1>Desserts</h1>
             {
                 desserts.map(dessert => (
                   <section key={dessert.id} className="menu-item">
@@ -27,6 +29,7 @@ const Menu = () => {
             )}
           </section>
           <section className="menu-section">
+            <h1>Drinks</h1>
             {
                 drinks.map(drink => (
                   <section key={drink.id} className="menu-item">
@@ -37,7 +40,6 @@ const Menu = () => {
             )}
           </section>
         </article>
-        <p id="copy" style={{textAlign: "center"}}> &copy; Copyright Little lemon</p>
     </article>
   )
 }
